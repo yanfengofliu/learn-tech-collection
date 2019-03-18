@@ -1,6 +1,8 @@
 package org.ssm.dufy.entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private Integer id;
 
     private String userName;
@@ -8,6 +10,8 @@ public class User {
     private String password;
 
     private Integer age;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -22,7 +26,7 @@ public class User {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -30,7 +34,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public Integer getAge() {
@@ -39,5 +43,20 @@ public class User {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", userName=").append(userName);
+        sb.append(", password=").append(password);
+        sb.append(", age=").append(age);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }
